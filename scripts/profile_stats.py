@@ -400,7 +400,7 @@ BRAND = {
 }
 
 
-def banner_whitemango(d, t, mode):
+def banner_whitemango(d, t, mode, mango_path):
     W, H = 1200, 300
     tot = d["totals"]
     years = len(d["years"])
@@ -408,7 +408,6 @@ def banner_whitemango(d, t, mode):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{esc(d['name'])}, C++ developer">
 <defs>
   <linearGradient id="hero" x1="0" y1="0" x2="1" y2=".55"><stop offset=".05" stop-color="#fc00e3"/><stop offset=".9" stop-color="#fc0000"/></linearGradient>
-  <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fc00e3"/><stop offset="1" stop-color="#fc0000"/></linearGradient>
   <radialGradient id="light"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
   <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".16"/></pattern>
   <clipPath id="frame"><rect width="{W}" height="{H}" rx="18"/></clipPath>
@@ -428,10 +427,7 @@ def banner_whitemango(d, t, mode):
   <rect width="{W}" height="{H}" fill="url(#dots)"/>
   <g class="drift"><ellipse cx="300" cy="90" rx="380" ry="200" fill="url(#light)"/></g>
 </g>
-<g transform="translate(70 75)"><g class="up">
-  <rect width="150" height="150" rx="34" fill="#fff"/>
-  <text x="75" y="97" font-family="{MONO}" font-size="56" font-weight="700" fill="url(#badge)" text-anchor="middle">&lt;/&gt;</text>
-</g></g>
+<g transform="translate(76 64)"><g class="up"><path transform="scale(.1564) translate(-2938.2 -842.4)" fill="#fff" fill-rule="evenodd" d="{mango_path}"/></g></g>
 <g font-family="{FONT}" fill="#fff">
   <text class="up d1" x="262" y="140" font-size="80" font-weight="700" letter-spacing="-1">{esc(d['name'])}<tspan class="blink" font-weight="300">_</tspan></text>
   <text class="up d2" x="266" y="184" font-size="25" fill-opacity=".95">C++ developer · <tspan font-weight="700">{num(tot['commits'])}</tspan> commits · <tspan font-weight="700">{num(tot['issues_solved'])}</tspan> issues solved · {years} years</text>
@@ -486,7 +482,7 @@ def banner_ascemu(d, t, mode, icon_path):
 '''
 
 
-def banner_stutzer(d, t, mode):
+def banner_stutzer(d, t, mode, amp_path):
     W, H = 1200, 300
     blue, deep, sun = "#2e55a5", "#12589a", "#fdf9ea"
     commits, solved, years, langs = banner_lines(d)
@@ -504,10 +500,7 @@ def banner_stutzer(d, t, mode):
   <rect width="{W}" height="{H}" fill="{blue}"/>
   <g class="slide"><path d="M820 0H1200V300H700Z" fill="{deep}"/><path d="M1000 0H1200V300H930Z" fill="#fff" fill-opacity=".06"/></g>
 </g>
-<g transform="translate(70 75)"><g class="up">
-  <rect width="150" height="150" rx="34" fill="{sun}"/>
-  <text x="75" y="97" font-family="{MONO}" font-size="56" font-weight="700" fill="{blue}" text-anchor="middle">&lt;/&gt;</text>
-</g></g>
+<g transform="translate(66 76)"><g class="up"><path transform="scale(1.206) translate(-51.8 -204.8)" fill="{sun}" d="{amp_path}"/></g></g>
 <g font-family="{FONT}" fill="{sun}">
   <text class="up d1" x="262" y="140" font-size="82" font-weight="700" letter-spacing="-2">{esc(d['name'])}.</text>
   <text class="up d2" x="266" y="184" font-size="25">C++ developer · <tspan font-weight="700">{commits}</tspan> commits · <tspan font-weight="700">{solved}</tspan> issues solved · {years} years</text>
@@ -566,7 +559,13 @@ def render(d, out):
     here = os.path.dirname(os.path.abspath(__file__))
     icon = open(os.path.join(here, "..", "assets", "ascemu-icon.svg"), encoding="utf-8").read()
     icon_path = re.search(r'fill-rule="evenodd" d="([^"]+)"', icon).group(1)
-    banners = {"whitemango": banner_whitemango, "stutzer": banner_stutzer,
+
+    def path_of(name):
+        with open(os.path.join(here, "..", "assets", name), encoding="utf-8") as f:
+            return re.search(r' d="([^"]+)"', f.read()).group(1)
+    mango_path, amp_path = path_of("whitemango-mango.svg"), path_of("stutzer-amp.svg")
+    banners = {"whitemango": lambda d, t, mode: banner_whitemango(d, t, mode, mango_path),
+               "stutzer": lambda d, t, mode: banner_stutzer(d, t, mode, amp_path),
                "ascemu": lambda d, t, mode: banner_ascemu(d, t, mode, icon_path)}
 
     def write(path, text):
