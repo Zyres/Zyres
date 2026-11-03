@@ -138,12 +138,32 @@ def collect(token, login):
 # ---------- rendering ----------
 
 THEMES = {
-    "dark":  dict(bg="#0f0c0a", panel="#17120e", line="#2a2119", grid="#ff8a1f", gridop=".06", fg="#f3ebe2", dim="#b9ab9c",
-                  faint="#7d6f62", accent="#ff8a1f", heat=("#1f1914", "#4a2a0c", "#8a4a10", "#c96a14", "#ff8a1f")),
-    "light": dict(bg="#faf6f1", panel="#ffffff", line="#e6dccf", grid="#aa5e18", gridop=".07", fg="#231a12", dim="#5d4f42",
-                  faint="#8a7b6c", accent="#aa5e18", heat=("#efe7dc", "#f3c99a", "#e59a4c", "#c4600d", "#7a3504")),
+    "whitemango": {
+        "dark":  dict(bg="#161616", panel="#1f1f1f", line="#2e2e2e", fg="#ffffff", dim="#d0d0d0", faint="#8a8a8a",
+                      accent="#ff2bea", hot=("#fc00e3", "#fc0000"),
+                      heat=("#262626", "#5a1452", "#a3008f", "#e6007a", "#fc1c1c")),
+        "light": dict(bg="#ffffff", panel="#f4f4f4", line="#e4e4e4", fg="#161616", dim="#383838", faint="#777777",
+                      accent="#d400bd", hot=("#ed00e1", "#fc0000"),
+                      heat=("#eeeeee", "#fbc4f2", "#f46be0", "#ef0f8f", "#fc0000")),
+    },
+    "ascemu": {
+        "dark":  dict(bg="#0f0c0a", panel="#17120e", line="#2a2119", fg="#f3ebe2", dim="#b9ab9c", faint="#7d6f62",
+                      accent="#ff8a1f", hot=("#ffc173", "#ff8a1f"), grid="#ff8a1f", gridop=".06",
+                      heat=("#1f1914", "#4a2a0c", "#8a4a10", "#c96a14", "#ff8a1f")),
+        "light": dict(bg="#faf6f1", panel="#ffffff", line="#e6dccf", fg="#231a12", dim="#5d4f42", faint="#8a7b6c",
+                      accent="#aa5e18", hot=("#c4600d", "#7a3504"), grid="#aa5e18", gridop=".07",
+                      heat=("#efe7dc", "#f3c99a", "#e59a4c", "#c4600d", "#7a3504")),
+    },
+    "stutzer": {
+        "dark":  dict(bg="#0f1d33", panel="#162848", line="#243a60", fg="#fdf9ea", dim="#c9d3e6", faint="#8392ad",
+                      accent="#a6bcdf", hot=("#fdf9ea", "#a6bcdf"),
+                      heat=("#1a2b4a", "#24447a", "#2e55a5", "#6f93d6", "#fdf9ea")),
+        "light": dict(bg="#ffffff", panel="#fdf9ea", line="#ebe3c7", fg="#1b2b4b", dim="#3c4f72", faint="#8a93a3",
+                      accent="#2e55a5", hot=("#2e55a5", "#12589a"),
+                      heat=("#f0f0f0", "#c9d6ee", "#8aa6dc", "#4f74c0", "#12589a")),
+    },
 }
-FONT = "'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif"
+FONT = "Roboto, 'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif"
 MONO = "'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace"
 STYLE = """<style>
   .in { opacity: 0; animation: in .7s ease-out forwards; }
@@ -165,14 +185,19 @@ def num(n):
 
 
 def frame(t, w, h, title, sub, body, label):
+    grid = ""
+    if t.get("grid"):
+        grid = (f'<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" '
+                f'stroke="{t["grid"]}" stroke-opacity="{t["gridop"]}"/></pattern><rect width="{w}" height="{h}" fill="url(#grid)"/>')
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="{esc(label)}">
-<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="{t['grid']}" stroke-opacity="{t['gridop']}"/></pattern>
+<defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{t['hot'][0]}"/><stop offset="1" stop-color="{t['hot'][1]}"/></linearGradient>
+<linearGradient id="mgv" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="{t['hot'][0]}"/><stop offset="1" stop-color="{t['hot'][1]}"/></linearGradient>
 <clipPath id="frame"><rect width="{w}" height="{h}" rx="16"/></clipPath></defs>
 {STYLE}
-<g clip-path="url(#frame)"><rect width="{w}" height="{h}" fill="{t['bg']}"/><rect width="{w}" height="{h}" fill="url(#grid)"/></g>
+<g clip-path="url(#frame)"><rect width="{w}" height="{h}" fill="{t['bg']}"/>{grid}</g>
 <rect x=".5" y=".5" width="{w-1}" height="{h-1}" rx="15.5" fill="none" stroke="{t['line']}"/>
 <g font-family="{FONT}">
-  <rect x="28" y="28" width="22" height="4" rx="2" fill="{t['accent']}"/>
+  <rect x="28" y="28" width="34" height="4" rx="2" fill="url(#mg)"/>
   <text x="28" y="58" font-size="20" font-weight="600" fill="{t['fg']}">{esc(title)}</text>
   <text x="{w-28}" y="58" font-size="12.5" fill="{t['faint']}" font-family="{MONO}" text-anchor="end">{esc(sub)}</text>
   {body}
@@ -222,7 +247,7 @@ def card_overview(d, t):
         out.append(f'''<g class="in" style="animation-delay:{i*0.06:.2f}s">
   <rect x="{x}" y="{y}" width="{tw}" height="{th}" rx="12" fill="{t['panel']}" stroke="{t['line']}"/>
   <text x="{x+18}" y="{y+26}" font-size="11" font-weight="600" fill="{t['faint']}" letter-spacing="1.2">{lab}</text>
-  <text x="{x+18}" y="{y+60}" font-size="32" font-weight="700" fill="{t['accent'] if hot else t['fg']}">{esc(val)}</text>
+  <text x="{x+18}" y="{y+60}" font-size="32" font-weight="700" fill="{'url(#mg)' if hot else t['fg']}">{esc(val)}</text>
   <text x="{x+18}" y="{y+84}" font-size="12" fill="{t['dim']}" font-family="{MONO}">{esc(sub)}</text>
 </g>''')
     h = y0 + 2 * th + gap + 28
@@ -301,7 +326,7 @@ def card_languages_years(d, t):
         h = max(2, gh * y["commits"] / peak) if y["commits"] else 0
         x0 = gx + i * slot + (slot - bwid) / 2
         hot = y["commits"] == peak
-        out.append(f'<rect class="grow growy" style="animation-delay:{i*0.05:.2f}s" x="{x0:.1f}" y="{gy+gh-h:.1f}" width="{bwid:.1f}" height="{h:.1f}" rx="4" fill="{t["accent"]}" fill-opacity="{1 if hot else .55}"><title>{y["commits"]} commits in {y["year"]}</title></rect>')
+        out.append(f'<rect class="grow growy" style="animation-delay:{i*0.05:.2f}s" x="{x0:.1f}" y="{gy+gh-h:.1f}" width="{bwid:.1f}" height="{h:.1f}" rx="4" fill="url(#mgv)" fill-opacity="{1 if hot else .45}"><title>{y["commits"]} commits in {y["year"]}</title></rect>')
         if y["commits"]:
             out.append(f'<text x="{x0+bwid/2:.1f}" y="{gy+gh-h-6:.1f}" font-size="10.5" fill="{t["dim"]}" text-anchor="middle" font-family="{MONO}">{num(y["commits"])}</text>')
         out.append(f'<text x="{x0+bwid/2:.1f}" y="{gy+gh+17}" font-size="11" fill="{t["faint"]}" text-anchor="middle">{"’" + str(y["year"])[2:]}</text>')
@@ -319,7 +344,7 @@ def card_repos(d, t):
         w = 380 * r["commits"] / peak
         out.append(f'''<g class="in" style="animation-delay:{i*0.07:.2f}s">
   <text x="28" y="{y}" font-size="15.5" font-weight="600" fill="{t['fg']}">{esc(r['name'])}</text>
-  <rect class="grow growx" style="animation-delay:{0.2 + i*0.07:.2f}s" x="420" y="{y-11}" width="{w:.1f}" height="12" rx="6" fill="{t['accent']}" fill-opacity="{1 if i == 0 else .6}"/>
+  <rect class="grow growx" style="animation-delay:{0.2 + i*0.07:.2f}s" x="420" y="{y-11}" width="{w:.1f}" height="12" rx="6" fill="url(#mg)" fill-opacity="{1 if i == 0 else .55}"/>
   <text x="{430 + w:.1f}" y="{y}" font-size="13" fill="{t['dim']}" font-family="{MONO}">{num(r['commits'])} commits</text>
   <circle cx="1010" cy="{y-5}" r="6" fill="{r['color']}"/><text x="1022" y="{y}" font-size="13" fill="{t['dim']}">{esc(r['lang'] or '-')}</text>
   <text x="1172" y="{y}" font-size="13" fill="{t['dim']}" text-anchor="end">★ {num(r['stars'])}</text>
@@ -370,55 +395,125 @@ def collect_builds(cfg):
 
 
 BRAND = {
-    "dark": dict(logo=("#ffc173", "#ff8a1f", "#b64f04"), glow=".35", ok="#48c75c", dev="#9a8b7c"),
-    "light": dict(logo=("#e08a2c", "#c4600d", "#7a3504"), glow=".18", ok="#288437", dev="#8a7b6c"),
+    "dark": dict(ok="#3ddc84", dev="#9a9a9a"),
+    "light": dict(ok="#1f8f4e", dev="#777777"),
 }
 
 
-def card_banner(d, t, mode, icon_path):
+def banner_whitemango(d, t, mode):
     W, H = 1200, 300
-    b = BRAND[mode]
-    colors = [r[mode] for r in d.get("builds", [])] or [t["accent"]]
-    seg = W / len(colors)
-    stripe = "".join(f'<rect x="{i*seg:.2f}" y="{H-6}" width="{seg+0.5:.2f}" height="6" fill="{c}"/>' for i, c in enumerate(colors))
-    stops = "".join(f'<stop offset="{i/max(len(colors)-1, 1):.3f}" stop-color="{c}"/>' for i, c in enumerate(colors))
     tot = d["totals"]
     years = len(d["years"])
     langs = " · ".join(l["name"] for l in d["languages"][:4])
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{esc(d['name'])}, C++ developer">
 <defs>
+  <linearGradient id="hero" x1="0" y1="0" x2="1" y2=".55"><stop offset=".05" stop-color="#fc00e3"/><stop offset=".9" stop-color="#fc0000"/></linearGradient>
+  <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fc00e3"/><stop offset="1" stop-color="#fc0000"/></linearGradient>
+  <radialGradient id="light"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".16"/></pattern>
+  <clipPath id="frame"><rect width="{W}" height="{H}" rx="18"/></clipPath>
+</defs>
+<style>
+  .drift {{ animation: drift 12s ease-in-out infinite alternate; }}
+  @keyframes drift {{ from {{ transform: translate(0px, 0px); }} to {{ transform: translate(520px, 30px); }} }}
+  .up {{ opacity: 0; animation: up .9s ease-out forwards; }}
+  .d1 {{ animation-delay: .15s; }} .d2 {{ animation-delay: .35s; }} .d3 {{ animation-delay: .55s; }}
+  @keyframes up {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+  .blink {{ animation: blink 1.1s steps(1) infinite; }}
+  @keyframes blink {{ 50% {{ opacity: 0; }} }}
+  @media (prefers-reduced-motion: reduce) {{ .drift, .up, .blink {{ animation: none; opacity: 1; }} }}
+</style>
+<g clip-path="url(#frame)">
+  <rect width="{W}" height="{H}" fill="url(#hero)"/>
+  <rect width="{W}" height="{H}" fill="url(#dots)"/>
+  <g class="drift"><ellipse cx="300" cy="90" rx="380" ry="200" fill="url(#light)"/></g>
+</g>
+<g transform="translate(70 75)"><g class="up">
+  <rect width="150" height="150" rx="34" fill="#fff"/>
+  <text x="75" y="97" font-family="{MONO}" font-size="56" font-weight="700" fill="url(#badge)" text-anchor="middle">&lt;/&gt;</text>
+</g></g>
+<g font-family="{FONT}" fill="#fff">
+  <text class="up d1" x="262" y="140" font-size="80" font-weight="700" letter-spacing="-1">{esc(d['name'])}<tspan class="blink" font-weight="300">_</tspan></text>
+  <text class="up d2" x="266" y="184" font-size="25" fill-opacity=".95">C++ developer · <tspan font-weight="700">{num(tot['commits'])}</tspan> commits · <tspan font-weight="700">{num(tot['issues_solved'])}</tspan> issues solved · {years} years</text>
+  <text class="up d3" x="266" y="226" font-size="17" fill-opacity=".85" font-family="{MONO}">{esc(langs)} · Zürich, Switzerland</text>
+</g>
+<rect class="up d3" x="266" y="244" width="140" height="3" rx="1.5" fill="#fff" fill-opacity=".85"/>
+</svg>
+'''
+
+
+def banner_lines(d):
+    tot = d["totals"]
+    return num(tot["commits"]), num(tot["issues_solved"]), len(d["years"]), " · ".join(l["name"] for l in d["languages"][:4])
+
+
+def banner_ascemu(d, t, mode, icon_path):
+    W, H = 1200, 300
+    logo = {"dark": ("#ffc173", "#ff8a1f", "#b64f04"), "light": ("#e08a2c", "#c4600d", "#7a3504")}[mode]
+    colors = [r[mode] for r in d.get("builds", [])] or [t["accent"]]
+    seg = W / len(colors)
+    stripe = "".join(f'<rect x="{i*seg:.2f}" y="{H-6}" width="{seg+0.5:.2f}" height="6" fill="{c}"/>' for i, c in enumerate(colors))
+    commits, solved, years, langs = banner_lines(d)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{esc(d['name'])}, C++ developer">
+<defs>
   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="{t['grid']}" stroke-opacity="{t['gridop']}"/></pattern>
-  <radialGradient id="glow"><stop offset="0" stop-color="{t['accent']}" stop-opacity="{b['glow']}"/><stop offset="1" stop-color="{t['accent']}" stop-opacity="0"/></radialGradient>
-  <linearGradient id="logo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{b['logo'][0]}"/><stop offset=".55" stop-color="{b['logo'][1]}"/><stop offset="1" stop-color="{b['logo'][2]}"/></linearGradient>
-  <linearGradient id="rainbow" x1="0" y1="0" x2="1" y2="0">{stops}</linearGradient>
-  <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <radialGradient id="glow"><stop offset="0" stop-color="{t['accent']}" stop-opacity="{'.35' if mode == 'dark' else '.18'}"/><stop offset="1" stop-color="{t['accent']}" stop-opacity="0"/></radialGradient>
+  <linearGradient id="logo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{logo[0]}"/><stop offset=".55" stop-color="{logo[1]}"/><stop offset="1" stop-color="{logo[2]}"/></linearGradient>
   <clipPath id="frame"><rect width="{W}" height="{H}" rx="18"/></clipPath>
 </defs>
 <style>
   .drift {{ animation: drift 14s ease-in-out infinite alternate; }}
   @keyframes drift {{ from {{ transform: translate(0px, 0px); }} to {{ transform: translate(560px, 40px); }} }}
-  .shine {{ animation: shine 6s linear infinite; }}
-  @keyframes shine {{ from {{ transform: translateX(-300px); }} to {{ transform: translateX({W + 300}px); }} }}
   .up {{ opacity: 0; animation: up .9s ease-out forwards; }}
   .d1 {{ animation-delay: .15s; }} .d2 {{ animation-delay: .35s; }} .d3 {{ animation-delay: .55s; }}
   @keyframes up {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
-  @media (prefers-reduced-motion: reduce) {{ .drift, .shine, .up {{ animation: none; opacity: 1; }} }}
+  @media (prefers-reduced-motion: reduce) {{ .drift, .up {{ animation: none; opacity: 1; }} }}
 </style>
 <g clip-path="url(#frame)">
   <rect width="{W}" height="{H}" fill="{t['bg']}"/>
   <rect width="{W}" height="{H}" fill="url(#grid)"/>
   <g class="drift"><ellipse cx="260" cy="130" rx="420" ry="230" fill="url(#glow)"/></g>
   {stripe}
-  <rect class="shine" x="0" y="{H-6}" width="300" height="6" fill="url(#fade)" opacity=".8"/>
 </g>
 <rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="17.5" fill="none" stroke="{t['line']}"/>
-<g transform="translate(70 62) scale(.80)" class="up"><path fill="url(#logo)" fill-rule="evenodd" d="{icon_path}"/></g>
+<g transform="translate(70 62) scale(.80)"><g class="up"><path fill="url(#logo)" fill-rule="evenodd" d="{icon_path}"/></g></g>
 <g font-family="{FONT}">
   <text class="up d1" x="290" y="132" font-size="78" font-weight="700" fill="{t['fg']}" letter-spacing="-1">{esc(d['name'])}</text>
-  <text class="up d2" x="294" y="174" font-size="25" fill="{t['dim']}">C++ developer · <tspan fill="{t['accent']}" font-weight="600">{num(tot['commits'])}</tspan> commits · <tspan fill="{t['accent']}" font-weight="600">{num(tot['issues_solved'])}</tspan> issues solved · {years} years</text>
+  <text class="up d2" x="294" y="174" font-size="25" fill="{t['dim']}">C++ developer · <tspan fill="{t['accent']}" font-weight="600">{commits}</tspan> commits · <tspan fill="{t['accent']}" font-weight="600">{solved}</tspan> issues solved · {years} years</text>
   <text class="up d3" x="294" y="222" font-size="17" fill="{t['faint']}" font-family="{MONO}">{esc(langs)} · Zürich, Switzerland</text>
 </g>
-<rect class="up d3" x="294" y="240" width="560" height="3" rx="1.5" fill="url(#rainbow)"/>
+</svg>
+'''
+
+
+def banner_stutzer(d, t, mode):
+    W, H = 1200, 300
+    blue, deep, sun = "#2e55a5", "#12589a", "#fdf9ea"
+    commits, solved, years, langs = banner_lines(d)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{esc(d['name'])}, C++ developer">
+<defs><clipPath id="frame"><rect width="{W}" height="{H}" rx="18"/></clipPath></defs>
+<style>
+  .up {{ opacity: 0; animation: up .9s ease-out forwards; }}
+  .d1 {{ animation-delay: .15s; }} .d2 {{ animation-delay: .35s; }} .d3 {{ animation-delay: .55s; }}
+  @keyframes up {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+  .slide {{ animation: slide 1.2s cubic-bezier(.2,.7,.2,1) both; }}
+  @keyframes slide {{ from {{ transform: translateX(260px); }} to {{ transform: translateX(0); }} }}
+  @media (prefers-reduced-motion: reduce) {{ .up, .slide {{ animation: none; opacity: 1; }} }}
+</style>
+<g clip-path="url(#frame)">
+  <rect width="{W}" height="{H}" fill="{blue}"/>
+  <g class="slide"><path d="M820 0H1200V300H700Z" fill="{deep}"/><path d="M1000 0H1200V300H930Z" fill="#fff" fill-opacity=".06"/></g>
+</g>
+<g transform="translate(70 75)"><g class="up">
+  <rect width="150" height="150" rx="34" fill="{sun}"/>
+  <text x="75" y="97" font-family="{MONO}" font-size="56" font-weight="700" fill="{blue}" text-anchor="middle">&lt;/&gt;</text>
+</g></g>
+<g font-family="{FONT}" fill="{sun}">
+  <text class="up d1" x="262" y="140" font-size="82" font-weight="700" letter-spacing="-2">{esc(d['name'])}.</text>
+  <text class="up d2" x="266" y="184" font-size="25">C++ developer · <tspan font-weight="700">{commits}</tspan> commits · <tspan font-weight="700">{solved}</tspan> issues solved · {years} years</text>
+  <text class="up d3" x="266" y="226" font-size="17" fill-opacity=".85" font-family="{MONO}">{esc(langs)} · Zürich, Switzerland</text>
+</g>
+<rect class="up d3" x="266" y="244" width="140" height="3" rx="1.5" fill="{sun}"/>
 </svg>
 '''
 
@@ -467,19 +562,25 @@ def card_builds(d, t, mode):
 
 
 def render(d, out):
-    os.makedirs(out, exist_ok=True)
     cards = {"stats": card_overview, "activity": card_activity, "languages": card_languages_years, "repos": card_repos}
     here = os.path.dirname(os.path.abspath(__file__))
     icon = open(os.path.join(here, "..", "assets", "ascemu-icon.svg"), encoding="utf-8").read()
     icon_path = re.search(r'fill-rule="evenodd" d="([^"]+)"', icon).group(1)
-    for mode, t in THEMES.items():
-        with open(os.path.join(out, f"banner-{mode}.svg"), "w", encoding="utf-8", newline="\n") as f:
-            f.write(card_banner(d, t, mode, icon_path))
-        with open(os.path.join(out, f"builds-{mode}.svg"), "w", encoding="utf-8", newline="\n") as f:
-            f.write(card_builds(d, t, mode))
-        for name, fn in cards.items():
-            with open(os.path.join(out, f"{name}-{mode}.svg"), "w", encoding="utf-8", newline="\n") as f:
-                f.write(fn(d, t))
+    banners = {"whitemango": banner_whitemango, "stutzer": banner_stutzer,
+               "ascemu": lambda d, t, mode: banner_ascemu(d, t, mode, icon_path)}
+
+    def write(path, text):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(text)
+
+    for theme, modes in THEMES.items():
+        for mode, t in modes.items():
+            write(os.path.join(out, theme, f"banner-{mode}.svg"), banners[theme](d, t, mode))
+            for name, fn in cards.items():
+                write(os.path.join(out, theme, f"{name}-{mode}.svg"), fn(d, t))
+    for mode, t in THEMES["ascemu"].items():
+        write(os.path.join(out, f"builds-{mode}.svg"), card_builds(d, t, mode))
 
 
 def main():
