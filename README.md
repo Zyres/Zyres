@@ -1,6 +1,6 @@
 <!-- Profile README for github.com/Zyres. Banners, stat cards (three themes) and build tiles are rebuilt daily by .github/workflows/profile.yml -->
 <!-- Pick a theme: every block holds the same live numbers -->
-<details open>
+<details name="theme" open>
 <summary><b>🥭 Theme: whitemango</b></summary>
 <br>
 
@@ -35,7 +35,7 @@
 </picture>
 
 </details>
-<details>
+<details name="theme">
 <summary><b>⚔️ Theme: AscEmu</b></summary>
 <br>
 
@@ -70,7 +70,7 @@
 </picture>
 
 </details>
-<details>
+<details name="theme">
 <summary><b>🔵 Theme: Stutzer &amp; Co.</b></summary>
 <br>
 
