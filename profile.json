@@ -1,0 +1,22 @@
+{
+  "ascemu": {
+    "protocol": "https://raw.githubusercontent.com/AscEmu/AscEmu/develop/src/world/Server/ClientProtocol.hpp",
+    "versions": "https://raw.githubusercontent.com/AscEmu/AscEmu/develop/src/shared/AEVersion.hpp.in",
+    "site": "https://ascemu.org/"
+  },
+  "builds": [
+    { "xp": "classic",  "name": "Classic",        "const": "CLASSIC_BUILD",      "profile": "Classic",            "dark": "#ff8a1f", "light": "#aa5e18" },
+    { "xp": "tbc",      "name": "TBC",            "const": "TBC_BUILD",          "profile": "TBC",                "dark": "#48c75c", "light": "#288437" },
+    { "xp": "wotlk",    "name": "WotLK",          "const": "WOTLK_BUILD",        "profile": "WotLK",              "dark": "#4fb4ff", "light": "#186caa" },
+    { "xp": "cata",     "name": "Cataclysm",      "const": "CATA_BUILD",         "profile": "Cata",               "dark": "#ff4f1f", "light": "#aa3718" },
+    { "xp": "mop",      "name": "Mists",          "const": "MOP_BUILD",          "profile": "Mop",                "dark": "#2fd1ae", "light": "#1d826c" },
+    { "xp": "wod",      "name": "Warlords",       "const": "WOD_BUILD",          "profile": "WoD",                "dark": "#d2683a", "light": "#9e4924" },
+    { "xp": "legion",   "name": "Legion",         "const": "LEGION_BUILD",       "profile": "Legion",             "dark": "#a4f02a", "light": "#547d12" },
+    { "xp": "bfa",      "name": "BfA",            "const": "BFA_BUILD",          "profile": "BfA",                "dark": "#5b86e6", "light": "#1a46a8" },
+    { "xp": "sl",       "name": "Shadowlands",    "const": "SHADOWLANDS_BUILD",  "profile": "Shadowlands",        "dark": "#d4cfc4", "light": "#6b665c" },
+    { "xp": "df",       "name": "Dragonflight",   "const": "DRAGONFLIGHT_BUILD", "profile": "Dragonflight",       "dark": "#6aaac8", "light": "#2c6680" },
+    { "xp": "tww",      "name": "The War Within", "const": "TWW_BUILD",          "profile": "TheWarWithin",       "dark": "#f5a43c", "light": "#a8400f" },
+    { "xp": "midnight", "name": "Midnight",       "const": "MIDNIGHT_BUILD",     "profile": "Midnight",           "dark": "#8a7bff", "light": "#5a48d8" },
+    { "xp": "forever",  "name": "Forever",        "const": "FOREVER_BUILD",      "profile": "AE_PROFILE_FOREVER", "dark": "#d9a462", "light": "#8a5a2a" }
+  ]
+}
