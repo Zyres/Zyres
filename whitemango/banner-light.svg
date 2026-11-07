@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Zyres, C++ developer">
+<defs>
+  <linearGradient id="hero" x1="0" y1="0" x2="1" y2=".55"><stop offset=".05" stop-color="#fc00e3"/><stop offset=".9" stop-color="#fc0000"/></linearGradient>
+  <radialGradient id="light"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".16"/></pattern>
+  <clipPath id="frame"><rect width="1200" height="300" rx="18"/></clipPath>
+</defs>
+<style>
+  .drift { animation: drift 12s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform: translate(0px, 0px); } to { transform: translate(520px, 30px); } }
+  .up { opacity: 0; animation: up .9s ease-out forwards; }
+  .d1 { animation-delay: .15s; } .d2 { animation-delay: .35s; } .d3 { animation-delay: .55s; }
+  @keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .blink { animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .drift, .up, .blink { animation: none; opacity: 1; } }
+</style>
+<g clip-path="url(#frame)">
+  <rect width="1200" height="300" fill="url(#hero)"/>
+  <rect width="1200" height="300" fill="url(#dots)"/>
+  <g class="drift"><ellipse cx="300" cy="90" rx="380" ry="200" fill="url(#light)"/></g>
+</g>
+<g transform="translate(76 64)"><g class="up"><path transform="scale(.1564) translate(-2938.2 -842.4)" fill="#fff" fill-rule="evenodd" d="M3061.42,1054.33C3057.74,1050.89 3054.87,1047.83 3053.44,1045.56L2946.18,940.737L3026.32,842.354L3131.13,996.004C3131.13,996.004 3225.23,879.172 3370.62,871.774C3555.15,862.386 3718.37,994.673 3822.84,1235.34C3822.84,1235.34 3771.38,1262.83 3691.76,1282.78C3712.5,1331.45 3730.27,1382.39 3739.33,1435.52C3787.35,1717.1 3618.31,1917 3547.55,1928.25C3458.49,1942.4 3454.68,1831.85 3159.01,1631.58C2883.5,1444.97 2885.33,1162.77 3057.09,1056.94C3058.53,1056.05 3059.97,1055.18 3061.42,1054.33ZM3143.79,1134.49C3138.71,1136.07 3133.77,1138 3129.12,1140.41C3125.15,1142.47 3121.16,1144.73 3117.26,1147.13C3070.09,1176.2 3044.39,1214.34 3043.09,1274.5C3040.96,1373.14 3109.41,1461.58 3224.51,1539.54C3420.17,1672.07 3437.15,1708.75 3514.07,1789.87C3527.24,1809.92 3550.41,1810.49 3563.68,1790.5C3579.95,1766 3593.64,1734 3611.46,1689.8C3641.51,1615.29 3637.51,1533.31 3619.62,1446.61C3607.74,1389.05 3593.39,1342.68 3576.3,1301.47C3445.9,1310.84 3284.2,1281.52 3143.79,1134.49Z"/></g></g>
+<g font-family="Roboto, 'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif" fill="#fff">
+  <text class="up d1" x="262" y="140" font-size="80" font-weight="700" letter-spacing="-1">Zyres<tspan class="blink" font-weight="300">_</tspan></text>
+  <text class="up d2" x="266" y="184" font-size="25" fill-opacity=".95">C++ developer · <tspan font-weight="700">5,664</tspan> commits · <tspan font-weight="700">469</tspan> issues solved · 13 years</text>
+  <text class="up d3" x="266" y="226" font-size="17" fill-opacity=".85" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">C++ · C · CSS · JavaScript · Zürich, Switzerland</text>
+</g>
+<rect class="up d3" x="266" y="244" width="140" height="3" rx="1.5" fill="#fff" fill-opacity=".85"/>
+</svg>

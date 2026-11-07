@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Zyres, C++ developer">
+<defs><clipPath id="frame"><rect width="1200" height="300" rx="18"/></clipPath></defs>
+<style>
+  .up { opacity: 0; animation: up .9s ease-out forwards; }
+  .d1 { animation-delay: .15s; } .d2 { animation-delay: .35s; } .d3 { animation-delay: .55s; }
+  @keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .slide { animation: slide 1.2s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes slide { from { transform: translateX(260px); } to { transform: translateX(0); } }
+  @media (prefers-reduced-motion: reduce) { .up, .slide { animation: none; opacity: 1; } }
+</style>
+<g clip-path="url(#frame)">
+  <rect width="1200" height="300" fill="#2e55a5"/>
+  <g class="slide"><path d="M820 0H1200V300H700Z" fill="#12589a"/><path d="M1000 0H1200V300H930Z" fill="#fff" fill-opacity=".06"/></g>
+</g>
+<g transform="translate(66 76)"><g class="up"><path transform="scale(1.206) translate(-51.8 -204.8)" fill="#fdf9ea" d="M171.88,326.62l-22.15-25.55c3.97-6.81,6.9-14.25,8.77-22.32,1.87-8.06,2.81-16.07,2.81-24.02h-24.36c0,9.88-1.36,18.85-4.09,26.91l-49.23-56.72h69.33v-20.1H57.41v23l21.01,24.58c-8.12,3.07-14.59,7.88-19.39,14.43-4.83,6.59-7.24,14.25-7.24,23,0,8.06,2.01,15.05,6.05,20.95,4.03,5.91,9.65,10.45,16.86,13.63,7.21,3.18,15.42,4.77,24.61,4.77,14.08,0,25.94-3.63,35.6-10.9l7.16,8.34h29.81ZM98.46,309.08c-6.36,0-11.67-1.73-15.93-5.2-4.26-3.46-6.39-8.15-6.39-14.05s1.59-10.36,4.77-13.71c3.18-3.35,7.38-5.37,12.6-6.05l26.91,31.34c-6.02,5.11-13.35,7.67-21.97,7.67Z"/></g></g>
+<g font-family="Roboto, 'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif" fill="#fdf9ea">
+  <text class="up d1" x="262" y="140" font-size="82" font-weight="700" letter-spacing="-2">Zyres.</text>
+  <text class="up d2" x="266" y="184" font-size="25">C++ developer · <tspan font-weight="700">5,664</tspan> commits · <tspan font-weight="700">469</tspan> issues solved · 13 years</text>
+  <text class="up d3" x="266" y="226" font-size="17" fill-opacity=".85" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">C++ · C · CSS · JavaScript · Zürich, Switzerland</text>
+</g>
+<rect class="up d3" x="266" y="244" width="140" height="3" rx="1.5" fill="#fdf9ea"/>
+</svg>
