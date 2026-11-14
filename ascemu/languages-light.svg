@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 308" width="1200" height="308" role="img" aria-label="Languages and commits per year">
+<defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c4600d"/><stop offset="1" stop-color="#7a3504"/></linearGradient>
+<linearGradient id="mgv" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#c4600d"/><stop offset="1" stop-color="#7a3504"/></linearGradient>
+<clipPath id="frame"><rect width="1200" height="308" rx="16"/></clipPath></defs>
+<style>
+  .in { opacity: 0; animation: in .7s ease-out forwards; }
+  @keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .grow { transform-box: fill-box; animation: grow 1.1s cubic-bezier(.2,.7,.2,1) both; }
+  .growx { transform-origin: left center; } .growy { transform-origin: center bottom; }
+  @keyframes grow { from { transform: scale(0, 1); } to { transform: scale(1, 1); } }
+  .growy { animation-name: growy; } @keyframes growy { from { transform: scale(1, 0); } to { transform: scale(1, 1); } }
+  @media (prefers-reduced-motion: reduce) { .in, .grow { animation: none; opacity: 1; } }
+</style>
+<g clip-path="url(#frame)"><rect width="1200" height="308" fill="#faf6f1"/><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#aa5e18" stroke-opacity=".07"/></pattern><rect width="1200" height="308" fill="url(#grid)"/></g>
+<rect x=".5" y=".5" width="1199" height="307" rx="15.5" fill="none" stroke="#e6dccf"/>
+<g font-family="Roboto, 'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="28" y="28" width="34" height="4" rx="2" fill="url(#mg)"/>
+  <text x="28" y="58" font-size="20" font-weight="600" fill="#231a12">Languages and years</text>
+  <text x="1172" y="58" font-size="12.5" fill="#8a7b6c" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">weighted by my commits</text>
+  <rect x="28" y="92" width="520" height="14" rx="7" fill="#ffffff"/>
+<clipPath id="lbar"><rect x="28" y="92" width="520" height="14" rx="7"/></clipPath><g clip-path="url(#lbar)">
+<rect class="grow growx" style="animation-delay:0.00s" x="28.0" y="92" width="446.6" height="14" fill="#f34b7d"/>
+<rect class="grow growx" style="animation-delay:0.08s" x="474.1" y="92" width="43.1" height="14" fill="#555555"/>
+<rect class="grow growx" style="animation-delay:0.16s" x="516.7" y="92" width="11.9" height="14" fill="#663399"/>
+<rect class="grow growx" style="animation-delay:0.24s" x="528.0" y="92" width="9.8" height="14" fill="#f1e05a"/>
+<rect class="grow growx" style="animation-delay:0.32s" x="537.4" y="92" width="4.5" height="14" fill="#e34c26"/>
+<rect class="grow growx" style="animation-delay:0.40s" x="541.4" y="92" width="3.3" height="14" fill="#e38c00"/>
+<rect class="grow growx" style="animation-delay:0.48s" x="544.2" y="92" width="2.3" height="14" fill="#DA3434"/>
+<rect class="grow growx" style="animation-delay:0.56s" x="546.0" y="92" width="1.4" height="14" fill="#4F5D95"/>
+</g>
+<g class="in" style="animation-delay:0.30s"><circle cx="34" cy="133" r="6" fill="#f34b7d"/><text x="48" y="138" font-size="15" fill="#231a12">C++</text><text x="268" y="138" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">85.8%</text></g>
+<g class="in" style="animation-delay:0.35s"><circle cx="304" cy="133" r="6" fill="#555555"/><text x="318" y="138" font-size="15" fill="#231a12">C</text><text x="538" y="138" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">8.2%</text></g>
+<g class="in" style="animation-delay:0.40s"><circle cx="34" cy="163" r="6" fill="#663399"/><text x="48" y="168" font-size="15" fill="#231a12">CSS</text><text x="268" y="168" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">2.2%</text></g>
+<g class="in" style="animation-delay:0.45s"><circle cx="304" cy="163" r="6" fill="#f1e05a"/><text x="318" y="168" font-size="15" fill="#231a12">JavaScript</text><text x="538" y="168" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">1.8%</text></g>
+<g class="in" style="animation-delay:0.50s"><circle cx="34" cy="193" r="6" fill="#e34c26"/><text x="48" y="198" font-size="15" fill="#231a12">HTML</text><text x="268" y="198" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">0.8%</text></g>
+<g class="in" style="animation-delay:0.55s"><circle cx="304" cy="193" r="6" fill="#e38c00"/><text x="318" y="198" font-size="15" fill="#231a12">TSQL</text><text x="538" y="198" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">0.5%</text></g>
+<g class="in" style="animation-delay:0.60s"><circle cx="34" cy="223" r="6" fill="#DA3434"/><text x="48" y="228" font-size="15" fill="#231a12">CMake</text><text x="268" y="228" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">0.3%</text></g>
+<g class="in" style="animation-delay:0.65s"><circle cx="304" cy="223" r="6" fill="#4F5D95"/><text x="318" y="228" font-size="15" fill="#231a12">PHP</text><text x="538" y="228" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace" text-anchor="end">0.2%</text></g>
+<text x="640" y="84" font-size="11" font-weight="600" fill="#8a7b6c" letter-spacing="1.2">COMMITS PER YEAR</text>
+<line x1="640" y1="268" x2="1172" y2="268" stroke="#e6dccf"/>
+<rect class="grow growy" style="animation-delay:0.00s" x="647.8" y="266.0" width="25.4" height="2.0" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>12 commits in 2014</title></rect>
+<text x="660.5" y="260.0" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">12</text>
+<text x="660.5" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’14</text>
+<rect class="grow growy" style="animation-delay:0.05s" x="688.7" y="152.5" width="25.4" height="115.5" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>684 commits in 2015</title></rect>
+<text x="701.4" y="146.5" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">684</text>
+<text x="701.4" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’15</text>
+<rect class="grow growy" style="animation-delay:0.10s" x="729.6" y="148.0" width="25.4" height="120.0" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>711 commits in 2016</title></rect>
+<text x="742.3" y="142.0" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">711</text>
+<text x="742.3" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’16</text>
+<rect class="grow growy" style="animation-delay:0.15s" x="770.5" y="121.1" width="25.4" height="146.9" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>870 commits in 2017</title></rect>
+<text x="783.2" y="115.1" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">870</text>
+<text x="783.2" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’17</text>
+<rect class="grow growy" style="animation-delay:0.20s" x="811.5" y="112.0" width="25.4" height="156.0" rx="4" fill="url(#mgv)" fill-opacity="1"><title>924 commits in 2018</title></rect>
+<text x="824.2" y="106.0" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">924</text>
+<text x="824.2" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’18</text>
+<rect class="grow growy" style="animation-delay:0.25s" x="852.4" y="241.5" width="25.4" height="26.5" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>157 commits in 2019</title></rect>
+<text x="865.1" y="235.5" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">157</text>
+<text x="865.1" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’19</text>
+<rect class="grow growy" style="animation-delay:0.30s" x="893.3" y="160.8" width="25.4" height="107.2" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>635 commits in 2020</title></rect>
+<text x="906.0" y="154.8" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">635</text>
+<text x="906.0" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’20</text>
+<rect class="grow growy" style="animation-delay:0.35s" x="934.2" y="187.5" width="25.4" height="80.5" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>477 commits in 2021</title></rect>
+<text x="946.9" y="181.5" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">477</text>
+<text x="946.9" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’21</text>
+<rect class="grow growy" style="animation-delay:0.40s" x="975.2" y="238.8" width="25.4" height="29.2" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>173 commits in 2022</title></rect>
+<text x="987.8" y="232.8" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">173</text>
+<text x="987.8" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’22</text>
+<rect class="grow growy" style="animation-delay:0.45s" x="1016.1" y="233.6" width="25.4" height="34.4" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>204 commits in 2023</title></rect>
+<text x="1028.8" y="227.6" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">204</text>
+<text x="1028.8" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’23</text>
+<rect class="grow growy" style="animation-delay:0.50s" x="1057.0" y="253.1" width="25.4" height="14.9" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>88 commits in 2024</title></rect>
+<text x="1069.7" y="247.1" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">88</text>
+<text x="1069.7" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’24</text>
+<rect class="grow growy" style="animation-delay:0.55s" x="1097.9" y="246.2" width="25.4" height="21.8" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>129 commits in 2025</title></rect>
+<text x="1110.6" y="240.2" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">129</text>
+<text x="1110.6" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’25</text>
+<rect class="grow growy" style="animation-delay:0.60s" x="1138.9" y="166.2" width="25.4" height="101.8" rx="4" fill="url(#mgv)" fill-opacity="0.45"><title>603 commits in 2026</title></rect>
+<text x="1151.5" y="160.2" font-size="10.5" fill="#5d4f42" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">603</text>
+<text x="1151.5" y="285" font-size="11" fill="#8a7b6c" text-anchor="middle">’26</text>
+</g>
+</svg>

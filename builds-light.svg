@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Client builds supported by AscEmu">
+<style>
+  .tile { opacity: 0; animation: in .6s ease-out forwards; }
+  @keyframes in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .bar { animation: pulse 5.85s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { width: 26px; } 8% { width: 60px; } 20% { width: 26px; } }
+  @media (prefers-reduced-motion: reduce) { .tile, .bar { animation: none; opacity: 1; } }
+</style>
+<g font-family="Roboto, 'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif">
+  <text x="600.0" y="30" font-size="20" font-weight="600" fill="#231a12" text-anchor="middle">One codebase, every expansion</text>
+  <text x="600.0" y="48" font-size="13" fill="#8a7b6c" text-anchor="middle" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">version · client build · state, read from the AscEmu source and ascemu.org</text>
+  <g class="tile" style="animation-delay:0.00s">
+  <rect x="10.0" y="58" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="10.0" y="58" width="160" height="104" rx="12" fill="#aa5e18" opacity=".05"/>
+  <rect class="bar" x="24.0" y="74" width="26" height="4" rx="2" fill="#aa5e18" style="animation-delay:0.00s"/>
+  <text x="24.0" y="104" font-size="17" font-weight="600" fill="#231a12">Classic</text>
+  <text x="24.0" y="126" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">1.12.1 · 5875</text>
+  <rect x="24.0" y="136" width="52.2" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="50.1" y="148.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">IN DEV</text>
+</g><g class="tile" style="animation-delay:0.07s">
+  <rect x="180.0" y="58" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="180.0" y="58" width="160" height="104" rx="12" fill="#288437" opacity=".05"/>
+  <rect class="bar" x="194.0" y="74" width="26" height="4" rx="2" fill="#288437" style="animation-delay:0.45s"/>
+  <text x="194.0" y="104" font-size="17" font-weight="600" fill="#231a12">TBC</text>
+  <text x="194.0" y="126" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">2.4.3 · 8606</text>
+  <rect x="194.0" y="136" width="52.2" height="17" rx="8.5" fill="none" stroke="#1f8f4e" stroke-opacity=".7"/>
+  <text x="220.1" y="148.5" font-size="10.5" font-weight="600" fill="#1f8f4e" text-anchor="middle" letter-spacing=".4">STABLE</text>
+</g><g class="tile" style="animation-delay:0.14s">
+  <rect x="350.0" y="58" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="350.0" y="58" width="160" height="104" rx="12" fill="#186caa" opacity=".05"/>
+  <rect class="bar" x="364.0" y="74" width="26" height="4" rx="2" fill="#186caa" style="animation-delay:0.90s"/>
+  <text x="364.0" y="104" font-size="17" font-weight="600" fill="#231a12">WotLK</text>
+  <text x="364.0" y="126" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">3.3.5a · 12340</text>
+  <rect x="364.0" y="136" width="52.2" height="17" rx="8.5" fill="none" stroke="#1f8f4e" stroke-opacity=".7"/>
+  <text x="390.1" y="148.5" font-size="10.5" font-weight="600" fill="#1f8f4e" text-anchor="middle" letter-spacing=".4">STABLE</text>
+</g><g class="tile" style="animation-delay:0.21s">
+  <rect x="520.0" y="58" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="520.0" y="58" width="160" height="104" rx="12" fill="#aa3718" opacity=".05"/>
+  <rect class="bar" x="534.0" y="74" width="26" height="4" rx="2" fill="#aa3718" style="animation-delay:1.35s"/>
+  <text x="534.0" y="104" font-size="17" font-weight="600" fill="#231a12">Cataclysm</text>
+  <text x="534.0" y="126" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">4.3.4 · 15595</text>
+  <rect x="534.0" y="136" width="52.2" height="17" rx="8.5" fill="none" stroke="#1f8f4e" stroke-opacity=".7"/>
+  <text x="560.1" y="148.5" font-size="10.5" font-weight="600" fill="#1f8f4e" text-anchor="middle" letter-spacing=".4">STABLE</text>
+</g><g class="tile" style="animation-delay:0.28s">
+  <rect x="690.0" y="58" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="690.0" y="58" width="160" height="104" rx="12" fill="#1d826c" opacity=".05"/>
+  <rect class="bar" x="704.0" y="74" width="26" height="4" rx="2" fill="#1d826c" style="animation-delay:1.80s"/>
+  <text x="704.0" y="104" font-size="17" font-weight="600" fill="#231a12">Mists</text>
+  <text x="704.0" y="126" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">5.4.8 · 18414</text>
+  <rect x="704.0" y="136" width="45.0" height="17" rx="8.5" fill="none" stroke="#1d826c" stroke-opacity=".7"/>
+  <text x="726.5" y="148.5" font-size="10.5" font-weight="600" fill="#1d826c" text-anchor="middle" letter-spacing=".4">FOCUS</text>
+</g><g class="tile" style="animation-delay:0.35s">
+  <rect x="860.0" y="58" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="860.0" y="58" width="160" height="104" rx="12" fill="#9e4924" opacity=".05"/>
+  <rect class="bar" x="874.0" y="74" width="26" height="4" rx="2" fill="#9e4924" style="animation-delay:2.25s"/>
+  <text x="874.0" y="104" font-size="17" font-weight="600" fill="#231a12">Warlords</text>
+  <text x="874.0" y="126" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">6.2.4 · 21742</text>
+  <rect x="874.0" y="136" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="896.5" y="148.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g><g class="tile" style="animation-delay:0.42s">
+  <rect x="1030.0" y="58" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="1030.0" y="58" width="160" height="104" rx="12" fill="#547d12" opacity=".05"/>
+  <rect class="bar" x="1044.0" y="74" width="26" height="4" rx="2" fill="#547d12" style="animation-delay:2.70s"/>
+  <text x="1044.0" y="104" font-size="17" font-weight="600" fill="#231a12">Legion</text>
+  <text x="1044.0" y="126" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">7.3.5 · 26972</text>
+  <rect x="1044.0" y="136" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="1066.5" y="148.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g><g class="tile" style="animation-delay:0.49s">
+  <rect x="95.0" y="172" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="95.0" y="172" width="160" height="104" rx="12" fill="#1a46a8" opacity=".05"/>
+  <rect class="bar" x="109.0" y="188" width="26" height="4" rx="2" fill="#1a46a8" style="animation-delay:3.15s"/>
+  <text x="109.0" y="218" font-size="17" font-weight="600" fill="#231a12">BfA</text>
+  <text x="109.0" y="240" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">8.3.7 · 35662</text>
+  <rect x="109.0" y="250" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="131.5" y="262.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g><g class="tile" style="animation-delay:0.56s">
+  <rect x="265.0" y="172" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="265.0" y="172" width="160" height="104" rx="12" fill="#6b665c" opacity=".05"/>
+  <rect class="bar" x="279.0" y="188" width="26" height="4" rx="2" fill="#6b665c" style="animation-delay:3.60s"/>
+  <text x="279.0" y="218" font-size="17" font-weight="600" fill="#231a12">Shadowlands</text>
+  <text x="279.0" y="240" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">9.2.7 · 45745</text>
+  <rect x="279.0" y="250" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="301.5" y="262.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g><g class="tile" style="animation-delay:0.63s">
+  <rect x="435.0" y="172" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="435.0" y="172" width="160" height="104" rx="12" fill="#2c6680" opacity=".05"/>
+  <rect class="bar" x="449.0" y="188" width="26" height="4" rx="2" fill="#2c6680" style="animation-delay:4.05s"/>
+  <text x="449.0" y="218" font-size="17" font-weight="600" fill="#231a12">Dragonflight</text>
+  <text x="449.0" y="240" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">10.2.7 · 55664</text>
+  <rect x="449.0" y="250" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="471.5" y="262.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g><g class="tile" style="animation-delay:0.70s">
+  <rect x="605.0" y="172" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="605.0" y="172" width="160" height="104" rx="12" fill="#a8400f" opacity=".05"/>
+  <rect class="bar" x="619.0" y="188" width="26" height="4" rx="2" fill="#a8400f" style="animation-delay:4.50s"/>
+  <text x="619.0" y="218" font-size="15" font-weight="600" fill="#231a12">The War Within</text>
+  <text x="619.0" y="240" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">11.2.7 · 65299</text>
+  <rect x="619.0" y="250" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="641.5" y="262.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g><g class="tile" style="animation-delay:0.77s">
+  <rect x="775.0" y="172" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="775.0" y="172" width="160" height="104" rx="12" fill="#5a48d8" opacity=".05"/>
+  <rect class="bar" x="789.0" y="188" width="26" height="4" rx="2" fill="#5a48d8" style="animation-delay:4.95s"/>
+  <text x="789.0" y="218" font-size="17" font-weight="600" fill="#231a12">Midnight</text>
+  <text x="789.0" y="240" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">12.1.5 · 70783</text>
+  <rect x="789.0" y="250" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="811.5" y="262.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g><g class="tile" style="animation-delay:0.84s">
+  <rect x="945.0" y="172" width="160" height="104" rx="12" fill="#ffffff" stroke="#e6dccf"/>
+  <rect x="945.0" y="172" width="160" height="104" rx="12" fill="#8a5a2a" opacity=".05"/>
+  <rect class="bar" x="959.0" y="188" width="26" height="4" rx="2" fill="#8a5a2a" style="animation-delay:5.40s"/>
+  <text x="959.0" y="218" font-size="17" font-weight="600" fill="#231a12">Forever</text>
+  <text x="959.0" y="240" font-size="13" fill="#5d4f42" font-family="'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace">1.60.1 · 70862</text>
+  <rect x="959.0" y="250" width="45.0" height="17" rx="8.5" fill="none" stroke="#777777" stroke-opacity=".7"/>
+  <text x="981.5" y="262.5" font-size="10.5" font-weight="600" fill="#777777" text-anchor="middle" letter-spacing=".4">EARLY</text>
+</g>
+</g>
+</svg>
